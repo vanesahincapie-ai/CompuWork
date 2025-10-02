@@ -10,6 +10,9 @@ package compuworksistema;
  */
 //Vanesa Hincapié Martínez 
 //Marisol Guarin Escobar
+import CompuWorkViews.AgregarEmpleado;
+import CompuWorkViews.IniciarSesion;
+import CompuWorkViews.MostrarEmpleados;
 import CompuWorkViews.VentanaPrincipal;
 import java.util.Date;
 
@@ -71,7 +74,21 @@ public class CompuWorkSistema {
           //  System.out.println("Error: " + e.getMessage());
        // }
         
-       VentanaPrincipal  ventana= new VentanaPrincipal();
-       ventana.setVisible(true);
+       
+       
+    
+    java.awt.EventQueue.invokeLater(() -> {
+        new IniciarSesion().setVisible(true); // ahora abre primero el login
+    });
+    {
+        
     }
-}
+    }}
+    
+
+    
+       
+       
+    
+    
+

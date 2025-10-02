@@ -10,25 +10,45 @@ package compuworksistema;
  */
 //Vanesa Hincapié Martínez 
 //Marisol Guarin Escobar
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Departamento {
     private String nombre;
-    private List<Empleado> empleados;
+    private String descripcion;  // nuevo atributo
+    private List<Empleado> empleados;  // lista de empleados
 
-    public Departamento(String nombreDepartamento) {
+    public Departamento(String nombreDepartamento, String descripcion) {
         this.nombre = nombreDepartamento;
+        this.descripcion = descripcion;
         this.empleados = new ArrayList<>();
     }
 
+    
+
+    // Getters y setters
     public String getNombre() {
         return nombre;
     }
 
-    public List<Empleado> getEmpleados() {
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<Empleado> getEmpleadosAsignados() {  // para compatibilidad con tu reporte
         return empleados;
+    }
+
+    public void setEmpleadosAsignados(List<Empleado> empleados) {
+        this.empleados = empleados;
     }
 
     // ===== CRUD con Excepciones =====
@@ -37,7 +57,6 @@ public class Departamento {
             throw new Exception("El empleado ya está en este departamento.");
         }
         empleados.add(nuevoEmpleado);
-        System.out.println("Empleado agregado correctamente.");
     }
 
     public Empleado buscarEmpleado(Empleado empleadoBuscado) throws Exception {
@@ -50,9 +69,7 @@ public class Departamento {
     }
 
     public void eliminarEmpleado(Empleado empleadoAEliminar) throws Exception {
-        if (empleados.remove(empleadoAEliminar)) {
-            System.out.println("Empleado eliminado correctamente.");
-        } else {
+        if (!empleados.remove(empleadoAEliminar)) {
             throw new Exception("No se pudo eliminar: el empleado no existe en este departamento.");
         }
     }
@@ -69,3 +86,4 @@ public class Departamento {
         return lista.toString();
     }
 }
+

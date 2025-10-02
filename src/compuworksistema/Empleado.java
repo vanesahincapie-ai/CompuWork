@@ -10,40 +10,36 @@ package compuworksistema;
  */
 //Vanesa Hincapié Martínez 
 //Marisol Guarin Escobar 
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public abstract class Empleado {
-  private static long contadorId = 1L;
-  private long idEmpleado; 
-  private String nombre;
-  private String apellido;
-  private String cargo;
-  private double salario;
-  private Date fechaIngreso;
-  private String beneficios;
-  
-  private final List<ReporteDesempeño> reporte; 
-  
-    public Empleado(int idEmpleado, String nombre, String apellido, String cargo, double salario, Date fechaIngreso) {
+    private static long contadorId = 1L;
+    private long idEmpleado; 
+    private String nombre;
+    private String apellido;
+    private String cargo;
+    private double salario;
+    private Date fechaIngreso;
+    private String beneficios;
+    
+    private final List<ReporteDesempeño> reporte; 
+    
+    public Empleado(String nombre, String apellido, String cargo, double salario, Date fechaIngreso) {
         this.idEmpleado = contadorId++;
         this.nombre = nombre;
-        this.apellido = apellido; 
+        this.apellido = apellido;
         this.cargo = cargo;
         this.salario = (salario < 0) ? 0 : salario;
         this.fechaIngreso = fechaIngreso;
-        this.beneficios = beneficios; 
-        this.reporte = new ArrayList <>();
+        this.beneficios = ""; 
+        this.reporte = new ArrayList<>();
     }
 
-    
-    public long getEmpleado() {
+    public long getIdEmpleado() {
         return idEmpleado;
-    }
-
-      public void setIdEmpleado(long idEmpleado) {
-        this.idEmpleado = idEmpleado;
     }
 
     public String getNombre() {
@@ -75,37 +71,38 @@ public abstract class Empleado {
     }
 
     public void setSalario(double salario) {
-           if (salario < 0) {
-            System.out.println("El salario no puede ser negativo.");
+        if (salario < 0) {
             this.salario = 0;
         } else {
             this.salario = salario;
-       
-           }
+        }
     }
-    public String getBeneficios(){
-         return beneficios;
-     }     
-    
-     public void setBeneficios(String beneficios){
-         this.beneficios = cargo;
-     }
-     public Date getFechaIngreso() {
+
+    public String getBeneficios() {
+        return beneficios;
+    }
+
+    public void setBeneficios(String beneficios) {
+        this.beneficios = beneficios;
+    }
+
+    public Date getFechaIngreso() {
         return fechaIngreso;
     }
 
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
- public void obtenerReporte(ReporteDesempeño r) {
+
+    public void agregarReporte(ReporteDesempeño r) {
         reporte.add(r);
     }
 
-    public List<ReporteDesempeño> visualizarReporte() {
+    public List<ReporteDesempeño> getReportes() {
         return reporte;
     }
-    
-       @Override
+
+    @Override
     public String toString() {
         return "ID: " + idEmpleado +
                ", Nombre: " + nombre + " " + apellido +
@@ -113,7 +110,8 @@ public abstract class Empleado {
                ", Salario: " + salario +
                ", Fecha de ingreso: " + fechaIngreso;
     }
-    
+
     public abstract String generarReporteDesempeño();
-    
 }
+
+

@@ -16,10 +16,11 @@ public class ReporteDesempeño {
         System.out.println(e.generarReporteDesempeño());
     }
 
-    public static void generarReporteDepartamento(Departamento d) {
-        System.out.println("=== Reporte del Departamento: " + d.getNombre() + " ===");
-        for (Empleado e : d.getEmpleados()) {
-            System.out.println(e.generarReporteDesempeño());
-        }
+   public static void generarReporteDepartamento(Departamento d) {
+    System.out.println("=== Reporte del Departamento: " + d.getNombre() + " ===");
+    for (Empleado e : d.getEmpleadosAsignados()) {  // <-- aquí
+        System.out.println(e.generarReporteDesempeño());
     }
 }
+
+    }

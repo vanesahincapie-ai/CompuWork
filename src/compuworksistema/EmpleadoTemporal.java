@@ -14,44 +14,29 @@ package compuworksistema;
 import java.util.Date;
 
 public class EmpleadoTemporal extends Empleado {
-    private String beneficio;
     private boolean contratoDefinido;
-    
 
-    public EmpleadoTemporal(int idEmpleado, String nombre, String apellido,String cargo, double salario, Date fechaIngreso, String beneficio, boolean contratoDefinido) {
-        super(idEmpleado,nombre, apellido, cargo, salario, fechaIngreso);
-        this.beneficio = beneficio; 
+    public EmpleadoTemporal(String nombre, String apellido, String cargo, double salario, Date fechaIngreso, String beneficios, boolean contratoDefinido) {
+        super(nombre, apellido, cargo, salario, fechaIngreso);
+        setBeneficios(beneficios);
         this.contratoDefinido = contratoDefinido;
     }
-    
-    public String getBeneficios() {
-        return beneficio;
-    }
 
-    public void setBeneficios(String beneficios) {
-        this.beneficio = beneficios;
-    }
+    public boolean isContratoDefinido() { return contratoDefinido; }
+    public void setContratoDefinido(boolean contratoDefinido) { this.contratoDefinido = contratoDefinido; }
 
-    public boolean isContratoDefinido() {
-        return contratoDefinido;
-    }
-
-    public void setContratoDefinido(boolean contratoDefinido) {
-        this.contratoDefinido = contratoDefinido;
-    } 
-   
     @Override
     public String toString() {
         return super.toString() +
                ", Tipo: Temporal" +
-               ", Beneficios: " + beneficio +
+               ", Beneficios: " + getBeneficios() +
                ", Contrato definido: " + contratoDefinido;
     }
 
     @Override
     public String generarReporteDesempeño() {
         return "Reporte de " + getNombre() + " " + getApellido() +
-               " (Temporal): Desempeño satisfactorio. Beneficios: " + beneficio +
+               " (Temporal): Desempeño satisfactorio. Beneficios: " + getBeneficios() +
                ", Contrato definido: " + (contratoDefinido ? "Sí" : "No");
-    } 
+    }
 }

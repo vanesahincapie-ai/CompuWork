@@ -14,41 +14,30 @@ package compuworksistema;
 import java.util.Date;
 
 public class EmpleadoPermanente extends Empleado {
-    private String beneficios;
     private Date fechaFinContrato;
 
-    public EmpleadoPermanente(int idEmpleado, String nombre, String apellido, String cargo, double salario, Date fechaIngreso, String beneficios, Date fechaFinContrato) {
-        super(idEmpleado, nombre, apellido, cargo, salario, fechaIngreso);
-        this.beneficios = beneficios;
-        this.fechaFinContrato  = fechaFinContrato;
-    }
-    
-     public String getBeneficios() {
-        return beneficios;
-    }
-
-    public void setBeneficios(String beneficios) {
-        this.beneficios = beneficios;
-    }
-
-    public Date getFechaFinContrato() {
-        return fechaFinContrato;
-    }
-
-    public void setFechaFinContrato(Date fechaFinContrato) {
+    public EmpleadoPermanente(String nombre, String apellido, String cargo, double salario, Date fechaIngreso, String beneficios, Date fechaFinContrato) {
+        super(nombre, apellido, cargo, salario, fechaIngreso);
+        setBeneficios(beneficios);
         this.fechaFinContrato = fechaFinContrato;
     }
-     
+
+    public Date getFechaFinContrato() { return fechaFinContrato; }
+    public void setFechaFinContrato(Date fechaFinContrato) { this.fechaFinContrato = fechaFinContrato; }
+
     @Override
     public String toString() {
         return super.toString() +
                ", Tipo: Permanente" +
-               ", Beneficios: " + beneficios +
+               ", Beneficios: " + getBeneficios() +
                ", Fecha fin contrato: " + fechaFinContrato;
     }
 
     @Override
     public String generarReporteDesempeño() {
         return "Reporte de " + getNombre() + " " + getApellido() +
-               " (Permanente): Desepeño excelente. Beneficios:" + beneficios;
-    }}
+               " (Permanente): Desempeño excelente. Beneficios: " + getBeneficios();
+    }
+}
+
+

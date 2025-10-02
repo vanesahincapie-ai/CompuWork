@@ -4,30 +4,74 @@
  */
 package CompuWorkViews;
 
+import static CompuWorkViews.VentanaPrincipal.empleados;
+import compuworksistema.Empleado;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author luis.cardona
  */
 public class MostrarEmpleados extends javax.swing.JDialog {
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MostrarEmpleados.class.getName());
-
-    /**
-     * Creates new form MostrarEmpleados
-     */
+     
     public MostrarEmpleados(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();     
+        initComponents();
         this.setLocationRelativeTo(null);
+        configurarIcono();
+        cargarEmpleados();
+    }
+     public MostrarEmpleados() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        configurarIcono();
+        cargarEmpleados();
+    }
+      private void configurarIcono() {
         try {
-             this.setIconImage(new ImageIcon(getClass().getResource("/CompuWorkImages/Logo.png")).getImage());
+            this.setIconImage(new ImageIcon(getClass().getResource("/CompuWorkImages/Logo.png")).getImage());
         } catch (Exception e) {
             System.out.println("Imagen no encontrada");
         }
     }
+       private void cargarEmpleados() {
+        DefaultTableModel modelo = (DefaultTableModel) tblEmpleados.getModel();
+        modelo.setRowCount(0); 
+        System.out.println("Empleados en la lista: " + empleados.size());
 
+        for (Empleado emp : empleados) {
+            modelo.addRow(new Object[]{
+                emp.getNombre(),
+                emp.getApellido(),
+                emp.getCargo(),
+                emp.getSalario(),
+                emp.getFechaIngreso(),
+                emp.getBeneficios()
+            });
+        }
+    }
+    
+
+    /**
+     * Creates new form MostrarEmpleados
+     */
+  
+        
+        
+    /**
+     *
+     */
+    
+        
+        
+       
+
+    /**
+     *
+     */
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,21 +81,170 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblEmpleados = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Mostrar Empleados");
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Logo.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel2.setText("Mostrar Empleados");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addGap(101, 101, 101)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(37, 37, 37))
+        );
+
+        tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Apellido", "Cargo ", "Salario", "Fecha de Inicio", "Beneficios"
+            }
+        ));
+        tblEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEmpleadosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblEmpleados);
+
+        btnEliminar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Eliminar.png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Actualizar.png"))); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnActualizar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnActualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnCerrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Cancelar.png"))); // NOI18N
+        btnCerrar.setText("Cerrar");
+        btnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCerrar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnCerrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(btnActualizar)
+                .addGap(70, 70, 70)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    cargarEmpleados(); 
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        {                                            
+    int filaSeleccionada = tblEmpleados.getSelectedRow();
+    
+    if (filaSeleccionada == -1) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Selecciona un empleado para eliminar.");
+        return;
+    }
+
+    
+    Empleado emp = empleados.get(filaSeleccionada);
+    empleados.remove(emp);
+
+   
+    cargarEmpleados();
+
+    javax.swing.JOptionPane.showMessageDialog(this, "Empleado eliminado correctamente.");
+}
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+   this.dispose(); 
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void tblEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmpleadosMouseClicked
+        
+    }//GEN-LAST:event_tblEmpleadosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -59,5 +252,18 @@ public class MostrarEmpleados extends javax.swing.JDialog {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblEmpleados;
     // End of variables declaration//GEN-END:variables
-}
+
+    
+    }
+
+   
+

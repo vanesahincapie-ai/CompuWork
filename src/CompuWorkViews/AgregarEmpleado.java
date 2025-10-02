@@ -4,7 +4,15 @@
  */
 package CompuWorkViews;
 
+import compuworksistema.Empleado;
+import compuworksistema.EmpleadoPermanente;
+import compuworksistema.EmpleadoTemporal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,6 +21,7 @@ import javax.swing.ImageIcon;
 public class AgregarEmpleado extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AgregarEmpleado.class.getName());
+    private Object txtFechaInicio;
 
     /**
      * Creates new form AgregarEmpleado
@@ -28,6 +37,15 @@ public class AgregarEmpleado extends javax.swing.JDialog {
         }
     }
 
+   public AgregarEmpleado() {
+    initComponents();
+    this.setLocationRelativeTo(null);
+    
+    lblFechaInicio.setVisible(false);   
+    TxtFechaInicio.setVisible(false);   
+}
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,21 +55,345 @@ public class AgregarEmpleado extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtCargo = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cmbTipo = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        lblFechaInicio = new javax.swing.JLabel();
+        TxtFechaInicio = new javax.swing.JTextField();
+        lblBeneficios = new javax.swing.JLabel();
+        txtBeneficios = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar Empleados");
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Logo.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel2.setText("Agregar Empleado");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addGap(82, 82, 82)
+                .addComponent(jLabel2)
+                .addContainerGap(232, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel3.setText("Nombre");
+
+        txtNombre.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel4.setText("Apellido");
+
+        txtApellido.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel5.setText("Cargo");
+
+        txtCargo.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel6.setText("Salario");
+
+        txtSalario.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel8.setText("Tipo");
+
+        cmbTipo.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "Permanente", "Temporal", " " }));
+        cmbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Guardar.png"))); // NOI18N
+        jButton1.setText("Guardar");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Limpiar.png"))); // NOI18N
+        jButton2.setText("Limpiar");
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Cancelar.png"))); // NOI18N
+        jButton3.setText("Cancelar");
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        lblFechaInicio.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblFechaInicio.setText("Fecha de Inicio");
+
+        TxtFechaInicio.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        TxtFechaInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtFechaInicioActionPerformed(evt);
+            }
+        });
+
+        lblBeneficios.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblBeneficios.setText("Beneficios");
+
+        txtBeneficios.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBeneficios)
+                    .addComponent(jLabel7)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel8)
+                                .addComponent(lblFechaInicio))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(11, 11, 11)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(jButton2)
+                                .addGap(75, 75, 75)
+                                .addComponent(jButton3))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtBeneficios)
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtApellido)
+                                    .addComponent(txtCargo)
+                                    .addComponent(txtSalario)
+                                    .addComponent(cmbTipo, 0, 198, Short.MAX_VALUE)
+                                    .addComponent(TxtFechaInicio))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaInicio)
+                    .addComponent(TxtFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblBeneficios)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtBeneficios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(32, 32, 32))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtCargo.setText("");
+        txtSalario.setText("");
+        cmbTipo.setSelectedIndex(0); 
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         {                                         
+    String nombre = txtNombre.getText().trim();
+    String apellido = txtApellido.getText().trim();
+    String cargo = txtCargo.getText().trim();
+    String salarioStr = txtSalario.getText().trim();
+    String tipo = (String) cmbTipo.getSelectedItem();
+    String beneficios = txtBeneficios.getText();
+
+    if(nombre.isEmpty() || apellido.isEmpty() || cargo.isEmpty() || salarioStr.isEmpty() || "SELECCIONE".equals(tipo)) {
+        JOptionPane.showMessageDialog(this, "Por favor completa todos los campos y selecciona un tipo.");
+        return;
+    }
+
+    double salario;
+    try {
+        salario = Double.parseDouble(salarioStr.replace(",", "."));
+    } catch(NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "El salario debe ser un número válido.");
+        return;
+    }
+
+    Date fechaInicio = new Date(); 
+    if("Temporal".equals(tipo)){
+        String fechaStr = TxtFechaInicio.getText().trim();
+        if(fechaStr.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingresa la fecha de inicio.");
+            return;
+        }
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            fechaInicio = formato.parse(fechaStr);
+        } catch(ParseException ex){
+            JOptionPane.showMessageDialog(this, "Formato de fecha incorrecto. Usa dd/MM/yyyy");
+            return;
+        }
+    }
+
+    Empleado nuevo;
+    if("Permanente".equals(tipo)) {
+        
+        nuevo = new EmpleadoPermanente(nombre, apellido, cargo, salario, new Date(), beneficios, new Date());
+    } else {
+        nuevo = new EmpleadoTemporal(nombre, apellido, cargo, salario, fechaInicio, beneficios, true);
+    }
+
+    
+    VentanaPrincipal.empleados.add(nuevo); 
+    JOptionPane.showMessageDialog(this, "Empleado agregado correctamente.");
+
+    // Limpiar campos
+    txtNombre.setText("");
+    txtApellido.setText("");
+    txtCargo.setText("");
+    txtSalario.setText("");
+    TxtFechaInicio.setText("");
+    txtBeneficios.setText("");
+    cmbTipo.setSelectedIndex(0);
+    lblFechaInicio.setVisible(false);
+    TxtFechaInicio.setVisible(false);
+}
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
+    {                                        
+    String tipo = (String) cmbTipo.getSelectedItem();
+    if("Temporal".equals(tipo)){
+        lblFechaInicio.setVisible(true);
+        TxtFechaInicio.setVisible(true); 
+    } else {
+        lblFechaInicio.setVisible(false);
+        TxtFechaInicio.setVisible(false); 
+    }
+}
+
+  
+
+    }//GEN-LAST:event_cmbTipoActionPerformed
+
+    private void TxtFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFechaInicioActionPerformed
+           
+    }//GEN-LAST:event_TxtFechaInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -59,5 +401,29 @@ public class AgregarEmpleado extends javax.swing.JDialog {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TxtFechaInicio;
+    private javax.swing.JComboBox<String> cmbTipo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblBeneficios;
+    private javax.swing.JLabel lblFechaInicio;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBeneficios;
+    private javax.swing.JTextField txtCargo;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
+
+    
 }
