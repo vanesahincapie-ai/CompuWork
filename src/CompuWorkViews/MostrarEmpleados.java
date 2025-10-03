@@ -6,7 +6,11 @@ package CompuWorkViews;
 
 import static CompuWorkViews.VentanaPrincipal.empleados;
 import compuworksistema.Empleado;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,6 +47,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
 
         for (Empleado emp : empleados) {
             modelo.addRow(new Object[]{
+                emp.getIdEmpleado(),
                 emp.getNombre(),
                 emp.getApellido(),
                 emp.getCargo(),
@@ -214,7 +219,47 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-    cargarEmpleados(); 
+   int filaSeleccionada = tblEmpleados.getSelectedRow();
+if (filaSeleccionada == -1) {
+    JOptionPane.showMessageDialog(this, "Selecciona un empleado para actualizar");
+    return;
+}
+
+
+   String nuevoNombre = JOptionPane.showInputDialog("Nuevo nombre");
+   String nuevoApellido = JOptionPane.showInputDialog("Nuevo apellido");
+   String nuevoCargo = JOptionPane.showInputDialog("Nuevo cargo");
+   double nuevoSalario = Double.parseDouble(JOptionPane.showInputDialog("Nuevo salario"));
+   String nuevaFechaIngreso = JOptionPane.showInputDialog("Nueva fecha de ingreso (dd/MM/yyyy)");
+   String nuevosBeneficios = JOptionPane.showInputDialog("Nuevos beneficios");
+
+   Empleado e = VentanaPrincipal.empleados.get(filaSeleccionada);
+
+    try {
+    
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    Date fecha = formato.parse(nuevaFechaIngreso);
+
+    
+    e.setNombre(nuevoNombre);
+    e.setApellido(nuevoApellido);
+    e.setCargo(nuevoCargo);
+    e.setSalario(nuevoSalario);
+    e.setFechaIngreso(fecha); 
+    e.setBeneficios(nuevosBeneficios);
+
+   
+    DefaultTableModel model = (DefaultTableModel) tblEmpleados.getModel();
+    model.setValueAt(nuevoNombre, filaSeleccionada, 1);
+    model.setValueAt(nuevoApellido, filaSeleccionada, 2);
+    model.setValueAt(nuevoCargo, filaSeleccionada, 3);
+    model.setValueAt(nuevoSalario, filaSeleccionada, 4);
+    model.setValueAt(nuevaFechaIngreso, filaSeleccionada, 5);
+    model.setValueAt(nuevosBeneficios, filaSeleccionada, 6);
+
+} catch (ParseException ex) {
+    JOptionPane.showMessageDialog(this, "Formato de fecha inválido. Use dd/MM/yyyy");
+}
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed

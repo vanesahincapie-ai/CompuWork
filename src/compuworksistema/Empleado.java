@@ -17,7 +17,7 @@ import java.util.List;
 
 public abstract class Empleado {
     private static long contadorId = 1L;
-    private long idEmpleado; 
+    private long idEmpleado = contadorId;
     private String nombre;
     private String apellido;
     private String cargo;
