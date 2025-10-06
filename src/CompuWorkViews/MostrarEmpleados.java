@@ -51,6 +51,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
                 emp.getNombre(),
                 emp.getApellido(),
                 emp.getCargo(),
+                emp.getDepartamento(),
                 emp.getSalario(),
                 emp.getFechaIngreso(),
                 emp.getBeneficios()
@@ -112,7 +113,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(101, 101, 101)
+                .addGap(189, 189, 189)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -130,13 +131,13 @@ public class MostrarEmpleados extends javax.swing.JDialog {
 
         tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Cargo ", "Salario", "Fecha de Inicio", "Beneficios"
+                "ID", "Nombre", "Apellido", "Cargo ", "Departamento", "Salario", "Fecha de inicio", "Beneficios"
             }
         ));
         tblEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,6 +162,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
         btnActualizar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CompuWorkImages/Actualizar.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
+        btnActualizar.setToolTipText("");
         btnActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnActualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -189,16 +191,16 @@ public class MostrarEmpleados extends javax.swing.JDialog {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(181, 181, 181)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(73, 73, 73)
                 .addComponent(btnActualizar)
-                .addGap(70, 70, 70)
+                .addGap(73, 73, 73)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,8 +213,8 @@ public class MostrarEmpleados extends javax.swing.JDialog {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(btnCerrar))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
@@ -229,6 +231,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
    String nuevoNombre = JOptionPane.showInputDialog("Nuevo nombre");
    String nuevoApellido = JOptionPane.showInputDialog("Nuevo apellido");
    String nuevoCargo = JOptionPane.showInputDialog("Nuevo cargo");
+   String nuevoDepartamento = JOptionPane.showInputDialog("Nuevo departamento");
    double nuevoSalario = Double.parseDouble(JOptionPane.showInputDialog("Nuevo salario"));
    String nuevaFechaIngreso = JOptionPane.showInputDialog("Nueva fecha de ingreso (dd/MM/yyyy)");
    String nuevosBeneficios = JOptionPane.showInputDialog("Nuevos beneficios");
@@ -244,6 +247,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     e.setNombre(nuevoNombre);
     e.setApellido(nuevoApellido);
     e.setCargo(nuevoCargo);
+    e.setDepartamento(nuevoDepartamento);
     e.setSalario(nuevoSalario);
     e.setFechaIngreso(fecha); 
     e.setBeneficios(nuevosBeneficios);
@@ -253,9 +257,10 @@ public class MostrarEmpleados extends javax.swing.JDialog {
     model.setValueAt(nuevoNombre, filaSeleccionada, 1);
     model.setValueAt(nuevoApellido, filaSeleccionada, 2);
     model.setValueAt(nuevoCargo, filaSeleccionada, 3);
-    model.setValueAt(nuevoSalario, filaSeleccionada, 4);
-    model.setValueAt(nuevaFechaIngreso, filaSeleccionada, 5);
-    model.setValueAt(nuevosBeneficios, filaSeleccionada, 6);
+    model.setValueAt(nuevoDepartamento, filaSeleccionada, 4); 
+    model.setValueAt(nuevoSalario, filaSeleccionada, 5);
+    model.setValueAt(nuevaFechaIngreso, filaSeleccionada, 6);
+    model.setValueAt(nuevosBeneficios, filaSeleccionada, 7);
 
 } catch (ParseException ex) {
     JOptionPane.showMessageDialog(this, "Formato de fecha inválido. Use dd/MM/yyyy");

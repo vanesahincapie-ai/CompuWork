@@ -21,6 +21,7 @@ public abstract class Empleado {
     private String nombre;
     private String apellido;
     private String cargo;
+    private String departamento;
     private double salario;
     private Date fechaIngreso;
     private String beneficios;
@@ -61,7 +62,13 @@ public abstract class Empleado {
     public String getCargo() {
         return cargo;
     }
-
+    
+    public String getDepartamento(){
+    return departamento;
+}
+    public void setDepartamento(String departamento) {
+    this.departamento = departamento;
+}
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
