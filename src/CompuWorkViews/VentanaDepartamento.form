@@ -220,7 +220,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="SansSerif" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Empleados Asignnados"/>
+        <Property name="text" type="java.lang.String" value="Empleados Asignados"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnAgregarEmpleado">
@@ -287,10 +287,16 @@
           <SubComponents>
             <Component class="javax.swing.JList" name="lstEmpleadosDisp">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="13" style="0"/>
+                </Property>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultListModel&lt;String&gt;() // de momento vac&#xed;o, luego se llena din&#xe1;micamente&#xa;&#xa;" type="code"/>
+                  <Connection code="lstEmpleadosDisp.setModel(new javax.swing.DefaultListModel&lt;String&gt;()&#xa;&#xa;" type="code"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="lstEmpleadosDispAncestorAdded"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -312,8 +318,11 @@
           <SubComponents>
             <Component class="javax.swing.JList" name="listEmpleadosAsig">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="13" style="0"/>
+                </Property>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultListModel&lt;String&gt;() // de momento vac&#xed;o, luego se llena din&#xe1;micamente&#xa;" type="code"/>
+                  <Connection code="lstEmpleadosDisp.setModel(new javax.swing.DefaultListModel&lt;String&gt;()" type="code"/>
                 </Property>
               </Properties>
               <AuxValues>

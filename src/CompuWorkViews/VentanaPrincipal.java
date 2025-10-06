@@ -260,9 +260,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
   }
 
         public static List<Empleado> empleados = new ArrayList<>();
-        public static List<Departamento> departamentos = new ArrayList<>();
+        public static ArrayList<Departamento> departamentos = new ArrayList<>();
 
-    
+
     }
 
     

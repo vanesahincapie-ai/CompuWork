@@ -220,7 +220,7 @@ public class MostrarEmpleados extends javax.swing.JDialog {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
    int filaSeleccionada = tblEmpleados.getSelectedRow();
-if (filaSeleccionada == -1) {
+   if (filaSeleccionada == -1) {
     JOptionPane.showMessageDialog(this, "Selecciona un empleado para actualizar");
     return;
 }
