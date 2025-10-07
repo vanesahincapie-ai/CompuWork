@@ -168,16 +168,30 @@ for (Empleado e : VentanaPrincipal.empleados) {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    for (Departamento dep : VentanaPrincipal.departamentos) {
-    txtAreaReportes.append("Departamento: " + dep.getNombre() + "\n");
-    txtAreaReportes.append("Descripción: " + dep.getDescripcion() + "\n");
+    txtAreaReportes.setText(""); // Limpia el área antes de mostrar
+
+String[] departamentos = {"Contabilidad", "Ventas", "Recursos Humanos", "Marketing"};
+
+for (String dep : departamentos) {
+    txtAreaReportes.append("Departamento: " + dep + "\n");
     txtAreaReportes.append("Empleados asignados:\n");
 
-    for (Empleado e : dep.getEmpleadosAsignados()) {
-        txtAreaReportes.append(" - " + e.getNombre() + " " + e.getApellido() + "\n");
+    boolean tieneEmpleados = false;
+
+    for (Empleado e : VentanaPrincipal.empleados) {
+        if (e.getDepartamento() != null && e.getDepartamento().equals(dep)) {
+            txtAreaReportes.append(" - " + e.getNombre() + " " + e.getApellido() + "\n");
+            tieneEmpleados = true;
+        }
     }
+
+    if (!tieneEmpleados) {
+        txtAreaReportes.append(" (Sin empleados asignados)\n");
+    }
+
     txtAreaReportes.append("------------------------\n");
 }
+
 
    
 
